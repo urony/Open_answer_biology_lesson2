@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>כותבים הסבר תהליכי</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1 id="appTitle">כותבים הסבר תהליכי</h1>
+    <nav id="stepper" class="stepper" aria-label="שלבים"></nav>
+  </header>
+
+  <main id="app" class="wrap"></main>
+
+  <!-- דוח להדפסה/יצוא – מחוץ למסך -->
+  <div id="reportHost" class="report-host" aria-hidden="true"></div>
+
+  <script src="lib/html2canvas.min.js"></script>
+  <script src="lib/jspdf.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="content.js"></script>
+  <script src="check.js"></script>
+  <script src="report.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

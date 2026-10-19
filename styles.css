@@ -1,0 +1,199 @@
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --ink: #1d2433;
+  --muted: #5b6577;
+  --line: #dde3ee;
+  --brand: #3b5bdb;
+  --brand-d: #2f49b0;
+  --ok: #1b8a4b;
+  --ok-bg: #e6f6ec;
+  --warn: #b26a00;
+  --warn-bg: #fff3dc;
+  --bad: #c0392b;
+  --bad-bg: #fdecea;
+  --chip: #eef2ff;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Heebo, "Segoe UI", "Noto Sans Hebrew", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.top {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 16px 8px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.top h1 { font-size: 18px; margin: 0 0 6px; }
+
+.stepper {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.stepper button {
+  flex: 1 0 auto;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.stepper button:disabled { opacity: .45; cursor: default; }
+.stepper button.active { background: var(--brand); border-color: var(--brand); color: #fff; font-weight: 700; }
+.stepper button.done { color: var(--ok); border-color: #b9e3c9; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 16px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.card h2 { margin: 0 0 8px; font-size: 20px; }
+.card h3 { margin: 14px 0 6px; font-size: 17px; }
+
+.question {
+  background: var(--chip);
+  border-right: 5px solid var(--brand);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 17px;
+}
+
+label.field { display: block; font-weight: 700; margin: 12px 0 4px; }
+input[type=text], input[type=number], textarea, select {
+  width: 100%;
+  font: inherit;
+  font-size: 16px; /* מונע זום אוטומטי באייפון */
+  padding: 10px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  direction: rtl;
+}
+textarea { min-height: 170px; resize: vertical; }
+textarea.short { min-height: 80px; }
+textarea:focus, input:focus, select:focus { outline: 3px solid #c9d4ff; border-color: var(--brand); }
+textarea[readonly] { background: #f1f3f8; color: #3a4357; }
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: var(--brand);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 6px 0 0 8px;
+  text-decoration: none;
+}
+.btn:hover { background: var(--brand-d); }
+.btn.secondary { background: #fff; color: var(--brand); border: 1.5px solid var(--brand); }
+.btn.green { background: #1fa855; }
+.btn.green:hover { background: #178a45; }
+.btn.small { padding: 6px 12px; font-size: 15px; }
+.btn:disabled { opacity: .5; cursor: default; }
+
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.spacer { flex: 1; }
+.muted { color: var(--muted); font-size: 15px; }
+.msg { margin-top: 8px; font-weight: 700; color: var(--bad); }
+.timer { font-variant-numeric: tabular-nums; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; font-size: 14px; color: var(--muted); }
+
+details.howto {
+  background: #fffbea;
+  border: 1px solid #f0e2a1;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 10px 0;
+}
+details.howto > summary { cursor: pointer; font-weight: 700; }
+details.howto ol, details.howto ul { margin: 8px 0 4px; padding-inline-start: 22px; }
+
+.modes { display: grid; gap: 10px; margin-top: 6px; }
+.mode {
+  display: flex; gap: 10px; align-items: flex-start;
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer;
+}
+.mode input { margin-top: 7px; }
+.mode.sel { border-color: var(--brand); background: var(--chip); }
+
+/* שרשור סיבתי */
+.chain { display: flex; flex-direction: column; align-items: stretch; gap: 0; margin: 10px 0; }
+.chain .node {
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 9px 12px; background: #fff;
+}
+.chain .node.fixed { background: var(--chip); border-color: #c4d0ff; font-weight: 700; }
+.chain .arrow { text-align: center; color: var(--brand); font-size: 20px; line-height: 1.2; padding: 2px 0; }
+.chain .arrow small { font-size: 12px; color: var(--muted); margin-inline-start: 6px; }
+.chain .nodeline { display: flex; gap: 6px; align-items: center; }
+.chain .nodeline input { flex: 1; }
+.chain .del { border: none; background: transparent; font-size: 20px; cursor: pointer; color: var(--bad); padding: 4px 8px; }
+
+/* דוגמאות בחומר הלימוד */
+.bad, .good {
+  border-radius: 10px; padding: 10px 12px; margin: 8px 0;
+}
+.bad { background: var(--bad-bg); border: 1px solid #f4c4be; }
+.good { background: var(--ok-bg); border: 1px solid #b9e3c9; }
+.tag { font-weight: 800; display: block; margin-bottom: 2px; }
+.learn-chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0; }
+.learn-chain .pill { background: var(--chip); border: 1px solid #c4d0ff; border-radius: 999px; padding: 3px 12px; font-size: 15px; }
+.learn-chain .ar { color: var(--brand); font-weight: 800; }
+details.step { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; margin: 8px 0; background: #fff; }
+details.step > summary { cursor: pointer; font-weight: 700; }
+.summary-img { width: 100%; border-radius: 10px; border: 1px solid var(--line); }
+
+/* משוב */
+.fb { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 15.5px; }
+.fb td, .fb th { padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: right; }
+.fb th { font-size: 13px; color: var(--muted); font-weight: 600; }
+.badge { display: inline-block; min-width: 26px; text-align: center; border-radius: 999px; padding: 0 8px; font-weight: 800; }
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.warn { background: var(--warn-bg); color: var(--warn); }
+.badge.bad { background: var(--bad-bg); color: var(--bad); }
+.fb .detail { color: var(--muted); font-size: 14.5px; display: block; }
+.score-line { font-weight: 800; font-size: 18px; margin: 6px 0; }
+.note { background: #f1f4fb; border-radius: 10px; padding: 8px 12px; font-size: 14.5px; color: var(--muted); }
+
+.cols { display: grid; gap: 10px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .cols { grid-template-columns: 1fr 1fr; } }
+.answer-box { background: #f8f9fc; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; white-space: pre-wrap; }
+
+.hidden { display: none !important; }
+
+/* דוח (מחוץ למסך) */
+.report-host { position: fixed; left: -12000px; top: 0; width: 794px; }
+.report { width: 794px; background: #fff; color: #111; direction: rtl; padding: 0; font-family: Heebo, "Segoe UI", "Noto Sans Hebrew", Arial, sans-serif; font-size: 15px; line-height: 1.55; }
+.report .rsec { padding: 14px 22px; background: #fff; }
+.report h1 { font-size: 24px; margin: 0 0 4px; color: #2f49b0; }
+.report h2 { font-size: 18px; margin: 0 0 8px; color: #2f49b0; border-bottom: 2px solid #dde3ee; padding-bottom: 4px; }
+.report h3 { font-size: 15px; margin: 8px 0 4px; }
+.report .meta { color: #444; font-size: 14px; }
+.report .ans { border: 1px solid #cfd6e4; border-radius: 8px; padding: 8px 10px; white-space: pre-wrap; background: #f8f9fc; }
+.report .two { display: flex; gap: 10px; align-items: stretch; }
+.report .two > div { flex: 1; }
+.report table.fb { font-size: 13.5px; }
+.report .chainline { font-size: 13.5px; color: #333; margin: 4px 0; }
