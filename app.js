@@ -77,6 +77,12 @@
     return h + "</div>";
   }
 
+  function copyBtn(key, o) {
+    if (o.done) return "";
+    return '<p class="muted" style="margin:0 0 6px">אחרי שבניתם שרשור, אפשר להעתיק אותו לתיבת התשובה ולערוך אותו שם, בלי לכתוב הכול מחדש.</p>' +
+      '<button class="btn secondary small" style="margin:0 0 8px" data-act="copyChain" data-key="' + key + '">⬇ העתקת השרשור לתיבת התשובה</button>';
+  }
+
   function errBox(k) { return msg[k] ? '<div class="msg">' + esc(msg[k]) + "</div>" : ""; }
 
   // ---------- שלבים ----------
@@ -124,7 +130,14 @@
       "<p>ביולוגיה היא שרשרת של תהליכים שמובילה לתוצאה: תופעה אחת גורמת לתופעה הבאה. הגוף לא עושה דברים 'על מנת ש…' והתאים לא 'רוצים' כלום. תשובה טובה מסבירה <b>כיצד</b> ו<b>למה</b>, ולא חוזרת על השאלה בניסוח אחר.</p>" +
       '<div class="question">אצל תינוק מסוים המחיצה בין החדרים לא נסגרה באופן טבעי לאחר הלידה. מה הסכנה בכך?</div>' +
       '<div class="bad"><span class="tag">דוגמה לתשובה לקויה: חזרה על השאלה</span>כאשר המחיצה לא נסגרת יש ערבוב של דם מהחלק הימני עם דם מהחלק השמאלי.<br><span class="muted">אין כאן הסבר תהליכי, לא ה“כיצד” ולא ה“למה”. זו חזרה מהירה על מה שכבר נאמר, בלי תוספת.</span></div>' +
-      '<div class="bad"><span class="tag">דוגמה לתשובה לקויה: האנשה וטאוטולוגיה</span>על מנת שהגוף יעשה נשימה תאית כמו שצריך, התאים רוצים שיגיע אליהם כמות מספיקה של חמצן… בגלל שהמחיצה לא הצליחה להיסגר, דם מהצד הימני מסתנן לצד השמאלי, פחות חמצן מגיע לתאים והם לא יכולים לעשות את כל הנשימה התאית שהם רוצים.<br><span class="muted">יש כאן חזרות והאנשה של התהליך. בביולוגיה אין “רצון” או “צורך”, יש סיבה ותוצאה. התהליך לא קורה “על מנת ש…”, תופעה אחת מובילה לאחרת.</span></div>' +
+      '<div class="alert"><b>⚠ שגיאה חשובה במיוחד: האנשה</b><p>אסור לתאר את הגוף, התאים או המולקולות כאילו יש להם רצון, כוונה או מטרה. אין תא ש"רוצה", ואין גוף ש"מנסה". יש רק סיבה ותוצאה: תופעה אחת גורמת לתופעה הבאה.</p>' +
+      '<table class="fb"><thead><tr><th>✖ האנשה / תכלית</th><th>✔ ניסוח מנגנוני</th></tr></thead><tbody>' +
+      '<tr><td>התאים רוצים שיגיע אליהם חמצן</td><td>התאים זקוקים לחמצן כחומר גלם לנשימה תאית, וכשכמותו יורדת קצב הנשימה התאית יורד</td></tr>' +
+      '<tr><td>הגוף מנסה לפצות על המחסור</td><td>המחסור בחמצן מעורר תגובה פיזיולוגית שמעלה את קצב הנשימה</td></tr>' +
+      '<tr><td>על מנת שייווצר ATP, מתרחשת נשימה תאית</td><td>בנשימה תאית נוצר ATP</td></tr>' +
+      '<tr><td>כדי שהדם יקבל חמצן, הנאדיות...</td><td>החמצן עובר מהנאדיות לדם בדיפוזיה, כי ריכוזו בנאדיות גבוה יותר</td></tr></tbody></table>' +
+      '<p class="muted">מילים שצריכות להדליק נורה אדומה: "על מנת ש…", "כדי ש…", "רוצה", "מנסה", "צריך", "מחליט". הכלי יסמן לכם אותן במשוב.</p></div>' +
+      '<div class="bad"><span class="tag">⚠ דוגמה לתשובה לקויה: האנשה וטאוטולוגיה</span>על מנת שהגוף יעשה נשימה תאית כמו שצריך, <u>התאים רוצים</u> שיגיע אליהם כמות מספיקה של חמצן… בגלל שהמחיצה לא הצליחה להיסגר, דם מהצד הימני מסתנן לצד השמאלי, פחות חמצן מגיע לתאים והם לא יכולים לעשות את כל הנשימה התאית <u>שהם רוצים</u>.<br><span class="muted">יש כאן חזרות והאנשה של התהליך. בביולוגיה אין “רצון” או “צורך”, יש סיבה ותוצאה. התהליך לא קורה “על מנת ש…”, תופעה אחת מובילה לאחרת.</span></div>' +
 
       "<h3>2. ארבעה צעדים לתכנון שרשור סיבתי</h3>" +
       '<details class="step" open><summary>א. זיהוי הסיבה והתוצאה</summary><p>מצאו בשאלה את הסיבה ואת התוצאה וסמנו אותן. כלי עזר: <b>מה שהתרחש קודם הוא הסיבה, ומה שהתרחש אחר כך הוא התוצאה.</b></p><div class="learn-chain"><span class="pill">סיבה: המחיצה בין החדרים לא נסגרה</span><span class="pill">תוצאה: סכנה לתינוק</span></div></details>' +
@@ -150,7 +163,7 @@
       "<h3>5. עוד כמה כללים</h3><ul>" +
       "<li>תארו 2–5 שלבים בדרך, ותגדירו את כיווניות התהליך.</li>" +
       "<li>שימו לב מה בדיוק שאלו, ואם יש עיקרון ביולוגי רלוונטי (לא תמיד יהיה).</li>" +
-      "<li>כתבו חד וברור: הוסיפו מידע מעבר לנאמר בשאלה, אבל רק תכנים רלוונטיים.</li></ul>" +
+      "<li>כתבו חד וברור: הוסיפו מידע מעבר לנאמר בשאלה, אבל רק תכנים רלוונטיים.</li><li><b>בדקו שלא האנשתם:</b> אין “רוצה”, “מנסה” או “על מנת ש…”. רק סיבה ותוצאה.</li></ul>" +
       '<h3>סיכום: מבנה תשובה משמ"ת</h3><img class="summary-img" src="assets/summary-mashmat.png" alt="תשובה משמ״ת: מבנה, שרשור סיבתי, עקרונות ביולוגיים, מקרה מקרו, מושגים ביולוגיים, תסגרו את התשובה">' +
       '<div style="margin-top:12px"><button class="btn" data-act="learnDone">' + back + "</button></div></div>";
   }
@@ -175,7 +188,7 @@
       howto("<ol><li>קראו שוב את השאלה.</li><li>בנו שרשור סיבתי: הסיבה והתוצאה כבר כתובות. הוסיפו לפחות שני שלבים באמצע, לפי הסדר.</li><li>קראו את השרשור, ובמקום כל חץ קראו 'גורם ל…' או 'כתוצאה מכך'.</li><li>כתבו את התשובה כטקסט זורם, עם כיווניות (יורד/עולה) ובלי דילוגים.</li><li>הכלי ייתן משוב ויציג השוואה לתשובה הראשונה שלכם.</li></ol>") +
       '<div class="question">' + esc(q.text) + "</div>" +
       "<h3>שלב 1: בונים את השרשור</h3>" + chainEditor("fix", q, true) +
-      '<div class="row"><h3 style="margin:8px 0">שלב 2: כותבים את התשובה</h3><span class="spacer"></span>' + timerSpan(o) + "</div>" +
+      '<div class="row"><h3 style="margin:8px 0">שלב 2: כותבים את התשובה</h3><span class="spacer"></span>' + timerSpan(o) + "</div>" + copyBtn("fix", o) +
       '<textarea data-bind="fix.text" ' + (o.done ? "readonly" : "") + ' placeholder="כתבו כאן את התשובה המתוקנת…">' + esc(o.text) + "</textarea>" + errBox("fix");
     if (!o.done) {
       h += '<button class="btn" data-act="submitFix">שליחה וקבלת משוב</button>' + learnBtn() + "</div>";
@@ -184,11 +197,11 @@
     h += "</div>" + feedbackBlock("fix");
     h += '<div class="card"><h2>רפלקציה: משווים בין שתי התשובות</h2>' +
       '<div class="cols"><div><h3>תשובה ראשונה</h3><div class="answer-box">' + esc(S.trial.text) + "</div></div><div><h3>תשובה מתוקנת</h3><div class=\"answer-box\">" + esc(o.text) + "</div></div></div>" +
-      '<label class="field" for="ss">איזה ציון (0–100) הייתם נותנים לעצמכם על התשובה הראשונה?</label><input type="number" id="ss" min="0" max="100" inputmode="numeric" data-bind="fix.selfScore" value="' + esc(o.selfScore) + '">' +
+      '<p class="muted">אפשר למלא כמה שרוצים, גם מילה אחת. לא חייבים למלא הכול כדי להמשיך.</p><label class="field" for="ss">איזה ציון (0–100) הייתם נותנים לעצמכם על התשובה הראשונה?</label><input type="number" id="ss" min="0" max="100" inputmode="numeric" data-bind="fix.selfScore" value="' + esc(o.selfScore) + '">' +
       '<label class="field">נמקו את הציון</label><textarea class="short" data-bind="fix.selfWhy">' + esc(o.selfWhy) + "</textarea>" +
       '<label class="field">האם חל שינוי בין התשובות? פרטו מה השתנה לדעתכם.</label><textarea class="short" data-bind="fix.changes">' + esc(o.changes) + "</textarea>" +
       '<p class="muted">ותמיד תזכרו לעשות רפלקציה: מה עשיתם טוב, מה אתם לוקחים מזה, ומה אפשר לשפר. לא להתבאס, ללמוד.</p>' +
-      errBox("reflect") + '<button class="btn" data-act="toPractice">להמשיך לתרגול נוסף ←</button></div>';
+      '<button class="btn" data-act="toPractice">להמשיך לתרגול נוסף ←</button></div>';
     return h;
   }
 
@@ -198,7 +211,7 @@
       howto("<ol><li>קראו את השאלה וזהו מה נתון בה, סיבה או תוצאה.</li><li>הסיבה כתובה בשרשור. הוסיפו שלבים בדרך, ובסוף כתבו מהי התוצאה הסופית.</li><li>כתבו את התשובה כטקסט זורם: מילות קישור סיבתיות, כיווניות, מושגים ביולוגיים ו-2–3 רמות ארגון.</li><li>אל תכתבו 'על מנת ש…' או 'התאים רוצים'. תארו סיבה ותוצאה.</li></ol>") +
       '<div class="question">' + esc(q.text) + "</div><p class='muted'>" + esc(q.hint) + "</p>" +
       "<h3>שלב 1: בונים את השרשור</h3>" + chainEditor("practice", q, false) +
-      '<div class="row"><h3 style="margin:8px 0">שלב 2: כותבים את התשובה</h3><span class="spacer"></span>' + timerSpan(o) + "</div>" +
+      '<div class="row"><h3 style="margin:8px 0">שלב 2: כותבים את התשובה</h3><span class="spacer"></span>' + timerSpan(o) + "</div>" + copyBtn("practice", o) +
       '<textarea data-bind="practice.text" ' + (o.done ? "readonly" : "") + ' placeholder="כתבו כאן את התשובה…">' + esc(o.text) + "</textarea>" + errBox("practice");
     if (!o.done) return h + '<button class="btn" data-act="submitPractice">שליחה וקבלת משוב</button>' + learnBtn() + "</div>";
     return h + "</div>" + feedbackBlock("practice") +
@@ -311,19 +324,24 @@
       if (o.chain.length > 1) o.chain.splice(+el.getAttribute("data-i"), 1);
       save(); render();
     },
+    copyChain: function (el) {
+      var key = el.getAttribute("data-key"), o = S[key], q = key === "fix" ? C.qCO : C.qPN;
+      var strip = function (t) { return t.replace(/\s*\([^)]*\)\s*$/, ""); };
+      var steps = o.chain.filter(function (x) { return x.trim(); });
+      var end = key === "fix" ? strip(q.chainEnd) : (o.endText || "").trim();
+      if (!steps.length && !end) { msg[key] = "קודם כתבו שלבים בשרשור, ואז אפשר להעתיק אותו."; return render(); }
+      if (o.text.trim() && !confirm("בתיבת התשובה כבר יש טקסט. להחליף אותו בשרשור?")) return;
+      var lines = [strip(q.chainStart)].concat(steps).concat(end ? [end] : []);
+      o.text = lines.map(function (l, i) { return i ? "כתוצאה מכך " + l.trim() : l.trim(); }).join(".\n") + ".";
+      if (!o.t0) o.t0 = Date.now();
+      msg[key] = ""; save(); render();
+    },
     submitFix: function () {
       if (filled(S.fix.chain) < 2) { msg.fix = "בנו שרשור עם לפחות שני שלבים באמצע."; return render(); }
       if (words(S.fix.text) < 8) { msg.fix = "כתבו את התשובה המלאה לפני השליחה."; return render(); }
       msg.fix = ""; S.fix.chain = S.fix.chain.filter(function (x) { return x.trim(); }); finishTimer(S.fix); save(); render();
     },
-    toPractice: function () {
-      var f = S.fix;
-      var sc = parseInt(f.selfScore, 10);
-      if (isNaN(sc) || sc < 0 || sc > 100 || f.selfWhy.trim().length < 5 || f.changes.trim().length < 5) {
-        msg.reflect = "מלאו ציון בין 0 ל-100, נימוק, ותיאור של השינוי בין התשובות."; return render();
-      }
-      msg.reflect = ""; goto("practice");
-    },
+    toPractice: function () { msg.reflect = ""; goto("practice"); },
     submitPractice: function () {
       var p = S.practice;
       if (filled(p.chain) < 2 || !p.endText.trim()) { msg.practice = "בנו שרשור עם לפחות שני שלבים באמצע, וכתבו את התוצאה הסופית."; return render(); }

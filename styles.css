@@ -197,3 +197,6 @@ details.step > summary { cursor: pointer; font-weight: 700; }
 .report .two > div { flex: 1; }
 .report table.fb { font-size: 13.5px; }
 .report .chainline { font-size: 13.5px; color: #333; margin: 4px 0; }
+
+.alert { background: #fff1e0; border: 2px solid #f0a040; border-radius: 12px; padding: 10px 14px; margin: 12px 0; }
+.alert p { margin: 6px 0; }

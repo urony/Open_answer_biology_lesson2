@@ -72,7 +72,7 @@
 
     parts.push(
       '<div class="rsec"><h2>הערכה עצמית</h2>' +
-      "<p><b>ציון שהייתי נותן/ת לתשובה הראשונה:</b> " + t(s.fix.selfScore) + " / 100</p>" +
+      "<p><b>ציון שהייתי נותן/ת לתשובה הראשונה:</b> " + (s.fix.selfScore ? esc(s.fix.selfScore) + " / 100" : "—") + "</p>" +
       "<p><b>נימוק:</b> " + t(s.fix.selfWhy) + "</p>" +
       "<p><b>מה השתנה בין התשובות:</b> " + t(s.fix.changes) + "</p></div>"
     );
